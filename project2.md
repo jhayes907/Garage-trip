@@ -12,21 +12,21 @@ Fork & Clone this repo.
 
 ---
 
-1. Jobsite materials/tasks tracker.[
+1. Jobsite materials/tasks tracker.[Clickup
    ](https://clickup.com/api)  
    As a user I want to find the jobsite I am going to and find a list of materials and a list of things to complete.
    As a user I want to edit those lists when tasks are completed or need to be added.
    As a user I want to edit the count of materials on site when used or added.
    As a user I want to view, make, and edit comments related to the jobsites.
 
-2. Funny Image sharing site/ meme maker.[
+2. Funny Image sharing site/ meme maker.[Gyazo
    ](https://gyazo.com/api/docs)
    As a user I want to view and upload images to my profile.
    As a user I want to be able to edit my images with text.
    As a user I want to share my images to a public feed.
    As a user I want to view publicly posted images and make comments on them.
 
-3. Garage sale Finder. [
+3. Garage sale Finder. [etsy
    ](https://www.etsy.com/developers/documentation/getting_started/api_basics)
    As a user I want to search for garage sales to go to in certain area.
    As a user I want to view a description of what is available at the sale I am interested in.
