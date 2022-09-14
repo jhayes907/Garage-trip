@@ -11,10 +11,25 @@ Fork & Clone this repo.
 - [ ] In this space below, list **THREE** ideas for your Project 2. For each idea, include [user stories](https://www.atlassian.com/agile/project-management/user-stories) for each idea and a link to the API(s) you want to use for it.
 
 --------------------------------------------------------
-1. 
-2. 
-3.
----------------------------------------------------------
+1. Jobsite materials/tasks tracker.[
+](https://clickup.com/api)  
+As a user I want to find the jobsite I am going to and find a list of materials and a list of things to complete.
+As a user I want to edit those lists when tasks are completed or need to be added.
+As a user I want to edit the count of materials on site when used or added.
+
+2. Funny Image sharing site/ meme maker.[
+](https://gyazo.com/api/docs)
+As a user I want to view and upload images to my profile.
+As a user I want to be able to edit my images with text.
+As a user I want to share my images to a public feed.
+As a user I want to view publicly posted images and make comments on them.
+
+3. Garage sale Finder.  [
+](https://www.etsy.com/developers/documentation/getting_started/api_basics)
+As a user I want to search for garage sales to go to in certain area.
+As a user I want to view a description of what is available at the sale I am interested in.
+As a user I want to be able to post my own garage sale ad.
+As a user I want to be able to edit or remove my posting.
 
 - [ ] Make a PR when you're done!
 
