@@ -10,26 +10,28 @@ Fork & Clone this repo.
 
 - [ ] In this space below, list **THREE** ideas for your Project 2. For each idea, include [user stories](https://www.atlassian.com/agile/project-management/user-stories) for each idea and a link to the API(s) you want to use for it.
 
---------------------------------------------------------
+---
+
 1. Jobsite materials/tasks tracker.[
-](https://clickup.com/api)  
-As a user I want to find the jobsite I am going to and find a list of materials and a list of things to complete.
-As a user I want to edit those lists when tasks are completed or need to be added.
-As a user I want to edit the count of materials on site when used or added.
+   ](https://clickup.com/api)  
+   As a user I want to find the jobsite I am going to and find a list of materials and a list of things to complete.
+   As a user I want to edit those lists when tasks are completed or need to be added.
+   As a user I want to edit the count of materials on site when used or added.
+   As a user I want to view, make, and edit comments related to the jobsites.
 
 2. Funny Image sharing site/ meme maker.[
-](https://gyazo.com/api/docs)
-As a user I want to view and upload images to my profile.
-As a user I want to be able to edit my images with text.
-As a user I want to share my images to a public feed.
-As a user I want to view publicly posted images and make comments on them.
+   ](https://gyazo.com/api/docs)
+   As a user I want to view and upload images to my profile.
+   As a user I want to be able to edit my images with text.
+   As a user I want to share my images to a public feed.
+   As a user I want to view publicly posted images and make comments on them.
 
-3. Garage sale Finder.  [
-](https://www.etsy.com/developers/documentation/getting_started/api_basics)
-As a user I want to search for garage sales to go to in certain area.
-As a user I want to view a description of what is available at the sale I am interested in.
-As a user I want to be able to post my own garage sale ad.
-As a user I want to be able to edit or remove my posting.
+3. Garage sale Finder. [
+   ](https://www.etsy.com/developers/documentation/getting_started/api_basics)
+   As a user I want to search for garage sales to go to in certain area.
+   As a user I want to view a description of what is available at the sale I am interested in.
+   As a user I want to be able to post my own garage sale ad.
+   As a user I want to be able to edit or remove my posting.
 
 - [ ] Make a PR when you're done!
 
@@ -38,27 +40,31 @@ As a user I want to be able to edit or remove my posting.
 ## Part 2
 
 In the space below:
-* either embed or link a completed ERD for your approved P2 idea
-* if there are any changes/additions to your user stories, place your full set of revised user stories here
-* either embed or link wireframes for every page of your app
 
-----------------------------------------------------------
+- either embed or link a completed ERD for your approved P2 idea
+- if there are any changes/additions to your user stories, place your full set of revised user stories here
+- either embed or link wireframes for every page of your app
+
+---
+
 ### ERD
 
-----------------------------------------------------------
+---
+
 ### User Stories
 
-----------------------------------------------------------
+---
+
 ### Wireframes
 
-----------------------------------------------------------
+---
 
 Make a PR when you're done!
-
 
 ## Requirements Inside `Project Board`
 
 `card` FUNDAMENTALS
+
 ```
 ### FUNDAMENTALS
 - [ ] Deployed (e.g. Heroku)
@@ -70,8 +76,9 @@ Make a PR when you're done!
 ```
 
 `card` SUFFICIENT DIFFICULTY
+
 ```
-### SUFFICIENT DIFFICULTY: At least 1 of the following: 
+### SUFFICIENT DIFFICULTY: At least 1 of the following:
 - [ ] Use of an API
 - [ ] Advanced Database Relationships
 - [ ] Sockets
@@ -91,7 +98,9 @@ Make a PR when you're done!
 - [ ] Password verification is checked
 - [ ] Can't sneak edit/delete data that I don't own by typing in random ids
 ```
+
 `card` GITHUB USAGE
+
 ```
 ### GITHUB USAGE
 - [ ] Appropriate Use of Github
@@ -104,6 +113,7 @@ Make a PR when you're done!
 ```
 
 `card` DATABASE USAGE
+
 ```
 ### DATABASE USAGE
 - [ ] At least 2 Models other than join tables (required)
@@ -113,6 +123,7 @@ Make a PR when you're done!
 ```
 
 `card` CODE STYLE
+
 ```
 ### CODE STYLE
 - [ ] Generally DRY code / No enormous files
@@ -120,7 +131,9 @@ Make a PR when you're done!
 - [ ] Naming conventions kept
 - [ ] No glaring logic errors
 ```
+
 `card` USER EXPERIENCE
+
 ```
 ### USER EXPERIENCE
 - [ ] Effort was put into design
