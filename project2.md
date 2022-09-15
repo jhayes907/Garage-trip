@@ -55,9 +55,13 @@ In the space below:
 ### User Stories
 
 As a USER I want to CREATE a PROFILE so that I can ADD and EDIT my LISTINGS.
+
 As a USER I want to SEARCH an area for active LISTINGS, so that I can find a sale close to me.
+
 As a USER I want to VIEW a LISTINGS description or LIST of ITEMS available, so I can choose where to go to.
+
 As a USER I want to SEARCH all listings by TAG or DESCRIPTION, so I can locate a sale with the TYPE of item I am trying to find.
+
 As a USER I want to COMMENT on a listing, or ask a QUESTION of the owner of the listing, so I can get information on items at that sale.
 
 ---
