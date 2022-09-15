@@ -71,8 +71,10 @@ As a USER I want to COMMENT on a listing, or ask a QUESTION of the owner of the 
 ### Wireframes
 ![home-page Edited](https://user-images.githubusercontent.com/106032985/190494679-68887946-6faf-4df7-b52b-583c69f4be20.jpg)
 ![signup Edited](https://user-images.githubusercontent.com/106032985/190494708-e49d7a0e-bd31-4af4-9cae-6b18960b5f3c.jpg)
+![profile Edited](https://user-images.githubusercontent.com/106032985/190502059-b3852edf-d722-4a43-b35e-b582fcdc522e.jpg
 ![browse Edited](https://user-images.githubusercontent.com/106032985/190494754-805b0654-c90f-41f3-bcc7-1bf291506baf.jpg)
 ![contact Edited](https://user-images.githubusercontent.com/106032985/190494796-d1241ca0-6120-4e32-a573-e48ee276e5b7.jpg)
+
 
 
 
