@@ -49,7 +49,7 @@ In the space below:
 
 ### ERD
 
----
+## <a href="url://garagetrip/public/assets/ERD.jpg">ERD.jpg</a>
 
 ### User Stories
 
