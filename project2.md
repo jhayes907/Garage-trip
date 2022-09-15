@@ -68,6 +68,7 @@ As a USER I want to COMMENT on a listing, or ask a QUESTION of the owner of the 
 
 ### Wireframes
 
+![wireframe-home-page](https://user-images.githubusercontent.com/106032985/190320606-90709a77-a050-48ae-b923-e1bd838f38c7.png)
 
 
 ---
