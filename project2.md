@@ -48,7 +48,9 @@ In the space below:
 ---
 
 ### ERD
-![20220914_203603](https://user-images.githubusercontent.com/106032985/190305175-517fcd90-6036-4749-879d-1d79d73abca8.jpg)
+
+![Database-model-Edited](https://user-images.githubusercontent.com/106032985/190494533-62b461f9-3294-45f7-911a-59911330d4cf.jpg)
+
 
 ---
 
@@ -67,8 +69,12 @@ As a USER I want to COMMENT on a listing, or ask a QUESTION of the owner of the 
 ---
 
 ### Wireframes
+![home-page Edited](https://user-images.githubusercontent.com/106032985/190494679-68887946-6faf-4df7-b52b-583c69f4be20.jpg)
+![signup Edited](https://user-images.githubusercontent.com/106032985/190494708-e49d7a0e-bd31-4af4-9cae-6b18960b5f3c.jpg)
+![browse Edited](https://user-images.githubusercontent.com/106032985/190494754-805b0654-c90f-41f3-bcc7-1bf291506baf.jpg)
+![contact Edited](https://user-images.githubusercontent.com/106032985/190494796-d1241ca0-6120-4e32-a573-e48ee276e5b7.jpg)
 
-![wireframe-Home](https://user-images.githubusercontent.com/106032985/190323368-dd552d9b-b5f2-48fd-a829-b16fbbf7fe31.jpg)
+
 
 ---
 
