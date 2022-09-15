@@ -48,8 +48,9 @@ In the space below:
 ---
 
 ### ERD
+![20220914_203603](https://user-images.githubusercontent.com/106032985/190305175-517fcd90-6036-4749-879d-1d79d73abca8.jpg)
 
-## <a href="url://garagetrip/public/assets/ERD.jpg">ERD.jpg</a>
+---
 
 ### User Stories
 
