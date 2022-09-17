@@ -7,6 +7,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("./config/ppConfig");
 const isLoggedIn = require("./middleware/isLoggedIn");
+const { application, request } = require("express");
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log("yoooooooo.......>>>", SECRET_SESSION);
@@ -38,10 +39,19 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/404", require("./controllers/404"));
+
+app.use((req, res) => {
+  res.status(404).render("404 Error: path not found");
+});
+
 app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("./browse", (req, res) => {
+  req.body;
+});
 // Add this above /auth controllers
 app.get("/profile", isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
