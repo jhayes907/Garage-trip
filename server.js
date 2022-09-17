@@ -1,4 +1,5 @@
 require("dotenv").config();
+const axios = require("axios");
 const express = require("express");
 const layouts = require("express-ejs-layouts");
 const app = express();
@@ -48,7 +49,6 @@ app.get("/profile", isLoggedIn, (req, res) => {
 });
 
 // access to all of out auth routes GET /auth/login, Get /auth/signup Post routes
-
 app.use("/auth", require("./controllers/auth"));
 
 const PORT = process.env.PORT || 3000;
