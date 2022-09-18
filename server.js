@@ -42,16 +42,14 @@ app.use((req, res, next) => {
 app.use("/404", require("./controllers/404"));
 
 app.use((req, res) => {
-  res.status(404).render("404 Error: path not found");
+  res.status(404).render("main/404");
 });
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("main/index");
 });
 
-app.get("./browse", (req, res) => {
-  req.body;
-});
+app.get("./browse", (req, res) => {});
 // Add this above /auth controllers
 app.get("/profile", isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
