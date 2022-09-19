@@ -2,10 +2,13 @@ require("dotenv").config();
 const axios = require("axios");
 const express = require("express");
 const layouts = require("express-ejs-layouts");
+const rowdy = require("rowdy-logger");
 const app = express();
+const rowdyResults = rowdy.begin(app);
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("./config/ppConfig");
+const moment = require("moment");
 const isLoggedIn = require("./middleware/isLoggedIn");
 const { application, request } = require("express");
 
@@ -18,6 +21,11 @@ app.use(require("morgan")("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
 app.use(layouts);
+
+app.use((req, res, next) => {
+  res.locals.moment = moment;
+  next();
+});
 
 app.use(flash());
 
@@ -62,6 +70,7 @@ app.use("/feedback", require("./controllers/feedback"));
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
+  rowdyResults.print();
 });
 
 module.exports = server;
