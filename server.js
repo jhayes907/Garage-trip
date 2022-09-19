@@ -39,25 +39,25 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/404", require("./controllers/404"));
-
-app.use((req, res) => {
-  res.status(404).render("main/404");
-});
-
-app.get("/", (req, res) => {
-  res.render("main/index");
-});
-
-app.get("./browse", (req, res) => {});
 // Add this above /auth controllers
-app.get("/profile", isLoggedIn, (req, res) => {
+app.get("/profile/index", isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
-  res.render("profile", { id, name, email });
+  res.render("profile/index", { id, name, email });
+});
+
+// Index route
+app.get("/", (req, res) => {
+  res.render("main/index.ejs");
 });
 
 // access to all of out auth routes GET /auth/login, Get /auth/signup Post routes
+app.use("/404", require("./controllers/404"));
 app.use("/auth", require("./controllers/auth"));
+app.use("/browse", require("./controllers/browse"));
+app.use("/about", require("./controllers/about"));
+app.use("/contact", require("./controllers/contact"));
+app.use("/feedback", require("./controllers/feedback"));
+// app.use("/profile", require("./controllers/profile"));
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
