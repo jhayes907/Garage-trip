@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const db = require("../models");
 
 router.get("/", (req, res) => {
-  res.render("home/404");
+  res.render("home/index");
 });
 
-module.exports = router;
+// router.get("/", (req, res) => {
+
+// });

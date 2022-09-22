@@ -90,19 +90,3 @@ async function deleteUser() {
     console.log("did not delete user(s) because of >>>", error);
   }
 }
-// @todo run deleteUser function below
-
-// async function createUser() {
-//   try {
-//     const newUser = await db.user.create({
-//       name: "My Name",
-//       email: "myemail@gmail.com",
-//       password: "password",
-//     });
-//     console.log("my new user >>>", newUser);
-//   } catch (error) {
-//     console.log("new user was not created b/c of >>>", error);
-//   }
-// }
-// // @todo run createUser function below
-// createUser();

@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.comments.belongsTo(models.listing);
+      models.comments.belongsTo(models.user);
     }
   }
   comments.init(

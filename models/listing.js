@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.listing.belongsTo(models.user);
+      models.listing.hasMany(models.comments);
+      models.listing.hasMany(models.items);
     }
   }
   listing.init(

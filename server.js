@@ -9,6 +9,8 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("./config/ppConfig");
 const moment = require("moment");
+const db = require("./models");
+
 const isLoggedIn = require("./middleware/isLoggedIn");
 const { application, request } = require("express");
 
@@ -47,25 +49,45 @@ app.use((req, res, next) => {
   next();
 });
 
+// Index route
+app.get("/home", (req, res) => {
+  res.render("home/index");
+});
+
 // Add this above /auth controllers
-app.get("/profile/index", isLoggedIn, (req, res) => {
+app.get("./index", isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
   res.render("profile/index", { id, name, email });
 });
 
-// Index route
-app.get("/", (req, res) => {
-  res.render("main/index.ejs");
-});
+// app.get("/", (req, res) => {
+//   db.article
+//     .findAll({
+//       include: [db.author, db.comment],
+//     })
+//     .then((articles) => {
+//       res.render("main/index", { articles: articles });
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//       res.status(400).render("main/404");
+//     });
+// });
 
-// access to all of out auth routes GET /auth/login, Get /auth/signup Post routes
-app.use("/404", require("./controllers/404"));
+// access to all auth routes GET /auth/login, Get /auth/signup Post routes
 app.use("/auth", require("./controllers/auth"));
+//  404 Get route
+app.use("/404", require("./controllers/404"));
+
+app.use("/profile", require("./controllers/profile"));
+
 app.use("/browse", require("./controllers/browse"));
+
 app.use("/about", require("./controllers/about"));
+
 app.use("/contact", require("./controllers/contact"));
+
 app.use("/feedback", require("./controllers/feedback"));
-// app.use("/profile", require("./controllers/profile"));
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {

@@ -1,0 +1,25 @@
+<h1>This is the browse page</h1>
+
+
+<div class="row">
+  <table class="table table-bordered table-striped">
+      <thead>
+          <th>Name</th>
+          <th>Id</th>
+          <th>Location</th>
+      </thead>
+      <tbody>
+          <% if(Array.isArray(listings) && listings.length > 0) { %>
+              <% listings.forEach((listing) => { %>
+                  <tr> 
+                      <td><a href="/browse/<%= listing.id %>">
+                          <%= listing.name %>
+                      </a></td>
+                      <td><%= listing.id %></td>
+                      <td><%= listing.address %></td>
+                  </tr>
+              <% }) %>
+          <% } %>
+      </tbody>
+  </table>
+</div> 
