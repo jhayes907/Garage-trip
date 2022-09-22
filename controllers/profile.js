@@ -8,6 +8,8 @@ router.get("/", isLoggedIn, (req, res) => {
     .findOne({
       include: [db.comments, db.listing],
       where: { id: req.user.id },
+      limit: 5,
+      order: [["updatedAt", "DESC"]],
     })
     .then((user) => {
       if (!user) throw Error();
@@ -16,13 +18,58 @@ router.get("/", isLoggedIn, (req, res) => {
         name: user.name,
         email: user.email,
         listings: user.listings,
+        tags: user.tags,
       });
     })
     .catch((error) => {
-      res.status(400).render("main/404");
+      res.status(400).render("home/404");
     });
 });
 
-router.get("/edit", (req, res) => {});
+router.get("/listing/:id", isLoggedIn, (req, res) => {
+  db.listing
+    .findOne({
+      include: [db.comments],
+      where: { id: req.params.id },
+    })
+    .then((listing) => {
+      if (!listing) throw Error();
+      res.render("profile/listings/listing", {
+        listing: listing,
+      });
+    })
+    .catch((error) => {
+      res.status(400).render("home/404");
+    });
+});
+
+router.get("/listing/:id/edit", isLoggedIn, (req, res) => {
+  db.listing
+    .findOne({
+      include: [db.comments],
+      where: { id: req.params.id },
+    })
+    .then((listing) => {
+      if (!listing) throw Error();
+      res.render("profile/listings/edit", {
+        listing: listing,
+      });
+    })
+    .catch((error) => {
+      res.status(400).render("home/404");
+    });
+});
+
+router.get("/listing/new", isLoggedIn, (req, res) => {
+  res.render("/listings/new");
+});
+
+router.post("/profile/:id/edit", isLoggedIn, (req, res) => {
+  res.render("profile/edit", {
+    editProfile: {
+      user,
+    },
+  });
+});
 
 module.exports = router;

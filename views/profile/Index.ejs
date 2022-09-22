@@ -4,6 +4,22 @@
 <p>Name: <%= name %></p>
 <p>Email: <%= email %></p>
 
+
+<form method="GET" action="/profile/lisitngs/listing">
+    <label for="nameFilter">Get by listing name</label>
+    <input id="nameFilter" type="text" name="nameFilter">
+    <input type="submit">
+</form>
+
+<form method="GET" action="/profile/lisitngs/edit">
+    <label for="editListing">Edit listing</label>
+    <input id="editListing" type="text" name="editListing">
+    <input type="submit">
+</form>
+
+<a class="btn btn-success" href="./profile/listings/new">Create Listing</a>
+
+<div></div>
 <div class="row">
     <table class="table table-bordered table-striped">
         <thead>
@@ -13,7 +29,7 @@
             <% if(Array.isArray(listings) && listings.length > 0) { %>
                 <% listings.forEach((listing) => { %>
                     <tr> 
-                        <td><a href="//<%= listing.id %>">
+                        <td><a href="/profile/listing/<%= listing.id %>">
                             <%= listing.name %>
                         </a></td>
                     </tr>

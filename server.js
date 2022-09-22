@@ -54,6 +54,25 @@ app.get("/", (req, res) => {
   res.render("home/index");
 });
 
+app.get("/", (req, res) => {
+  db.listing
+    .findOne({
+      include: [db.listing],
+      where: { id: req.listing.id },
+      limit: 5,
+      order: [["updatedAt", "DESC"]],
+    })
+    .then((listings) => {
+      if (!listings) throw Error();
+      res.render("home/index", {
+        listings,
+      });
+    })
+    .catch((error) => {
+      res.status(400).render("home/404");
+    });
+});
+
 // Add this above /auth controllers
 app.get("./index", isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
@@ -64,8 +83,6 @@ app.get("./index", isLoggedIn, (req, res) => {
 app.use("/auth", require("./controllers/auth"));
 // access to GET /404
 app.use("/404", require("./controllers/404"));
-
-app.use("/home", require("./controllers/home"));
 
 app.use("/profile", require("./controllers/profile"));
 

@@ -7,16 +7,18 @@
           <th>Name</th>
           <th>Id</th>
           <th>Location</th>
+          <th>Tags</th>
       </thead>
       <tbody>
           <% if(Array.isArray(listings) && listings.length > 0) { %>
               <% listings.forEach((listing) => { %>
                   <tr> 
-                      <td><a href="/browse/<%= listing.id %>">
+                      <td><a href="/browse/show/<%= listing.id %>">
                           <%= listing.name %>
                       </a></td>
                       <td><%= listing.id %></td>
-                      <td><%= listing.address %></td>
+                      <td><%= listing.location %></td>
+                      <td><%= listing.tags %></td>
                   </tr>
               <% }) %>
           <% } %>

@@ -21,3 +21,29 @@
   
     <input type="submit" value="Sign up">
 </form>
+
+<h3>Welcome to your PROFILE</h3>
+
+<p>Id: <%= id %></p>
+<p>Name: <%= name %></p>
+<p>Email: <%= email %></p>
+
+<div></div>
+<div class="row">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <th>Name</th>
+        </thead>
+        <tbody>
+            <% if(Array.isArray(listings) && listings.length > 0) { %>
+                <% listings.forEach((listing) => { %>
+                    <tr> 
+                        <td><a href="//<%= listing.id %>">
+                            <%= listing.name %>
+                        </a></td>
+                    </tr>
+                <% }) %>
+            <% } %>
+        </tbody>
+    </table>
+  </div>

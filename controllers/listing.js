@@ -4,7 +4,10 @@ const db = require("../models");
 
 router.get("/", (req, res) => {
   db.listing
-    .findAll()
+    .findOne({
+      where: { name: req.query.name },
+      include: [db.listing],
+    })
     .then((listings) => {
       res.render("browse/index", { listings: listings });
     })
