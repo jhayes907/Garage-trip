@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 });
 
 // Index route
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
   res.render("home/index");
 });
 
@@ -60,24 +60,12 @@ app.get("./index", isLoggedIn, (req, res) => {
   res.render("profile/index", { id, name, email });
 });
 
-// app.get("/", (req, res) => {
-//   db.article
-//     .findAll({
-//       include: [db.author, db.comment],
-//     })
-//     .then((articles) => {
-//       res.render("main/index", { articles: articles });
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//       res.status(400).render("main/404");
-//     });
-// });
-
 // access to all auth routes GET /auth/login, Get /auth/signup Post routes
 app.use("/auth", require("./controllers/auth"));
-//  404 Get route
+// access to GET /404
 app.use("/404", require("./controllers/404"));
+
+app.use("/home", require("./controllers/home"));
 
 app.use("/profile", require("./controllers/profile"));
 

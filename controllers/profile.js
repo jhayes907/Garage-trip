@@ -23,4 +23,6 @@ router.get("/", isLoggedIn, (req, res) => {
     });
 });
 
+router.get("/edit", (req, res) => {});
+
 module.exports = router;
