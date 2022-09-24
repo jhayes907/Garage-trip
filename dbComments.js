@@ -2,9 +2,9 @@ const db = require("./models");
 
 async function createComments() {
   try {
-    const newComments = await db.comments.create({
-      title: "Wonderful",
-      body: "Hello. Just wanted to say your sight is the bees knees!",
+    const newComments = await db.comment.create({
+      title: "interested",
+      body: "Is this still available?",
       userId: 1,
       listingId: 1,
     });

@@ -5,11 +5,11 @@ const db = require("./models");
 // CREATE
 async function createUser() {
   try {
-    const newUser = await db.users.create({
-      name: "Jared Hayes",
-      location: "Minnesota",
-      email: "jhayes907@gmail.com",
-      password: "1234admin",
+    const newUser = await db.user.create({
+      name: "The Goat",
+      location: "Chicago",
+      email: "thegoat@gmail.com",
+      password: "6*1champion",
     });
     console.log("my new user >>>", newUser);
   } catch (error) {
@@ -23,7 +23,7 @@ createUser();
 // find one user
 async function findOneUser() {
   try {
-    const user = await db.users.findOne({
+    const user = await db.user.findOne({
       where: { name: "Jared Hayes" },
     });
     console.log("current user here >>>", user);
@@ -37,7 +37,7 @@ async function findOneUser() {
 // find all users
 async function findAllUsers() {
   try {
-    const users = await db.users.findAll();
+    const users = await db.user.findAll();
     console.log("all users here >>>", users);
   } catch (error) {
     console.log("did not find all users because of >>>", error);
@@ -48,7 +48,7 @@ async function findAllUsers() {
 // find one user
 async function findOrCreate() {
   try {
-    const users = await db.users.findOrCreate({
+    const users = await db.user.findOrCreate({
       where: { email: "briansmith@gmail.com" },
       defaults: {
         name: "Brian Smith",
@@ -64,7 +64,7 @@ async function findOrCreate() {
 // UPDATE
 async function updateUser() {
   try {
-    const numRowsUpdated = await db.users.update(
+    const numRowsUpdated = await db.user.update(
       {
         name: "Brian Taco",
       },
@@ -84,7 +84,7 @@ async function updateUser() {
 // DELETE
 async function deleteUser() {
   try {
-    let numOfRowsDeleted = await db.users.destroy({
+    let numOfRowsDeleted = await db.user.destroy({
       where: { name: "Jared Hayes" },
     });
     console.log("number of rows deleted >>>", numOfRowsDeleted);

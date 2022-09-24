@@ -3,10 +3,12 @@ const db = require("./models");
 async function createItem() {
   try {
     const newItems = await db.item.create({
-      name: "vinyl records",
-      tags: "vinyl",
-      userId: 1,
-      listingId: 1,
+      name: "size 14 signed championship game sneekers",
+      tags: "collector",
+      location: "Chicago",
+      content: "Better grab em quick!",
+      userId: 3,
+      listingId: 3,
     });
     console.log("my new items >>>", newItems);
   } catch (error) {
@@ -14,4 +16,4 @@ async function createItem() {
   }
 }
 // @todo run createUser function below
-createItem();
+// createItem();

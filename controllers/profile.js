@@ -4,22 +4,15 @@ const db = require("../models");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/", isLoggedIn, (req, res) => {
-  db.users
+  db.user
     .findOne({
-      include: [db.comments, db.listings],
-      where: { id: req.users.id },
-      limit: 5,
-      order: [["updatedAt", "DESC"]],
+      where: { id: req.user.id },
+      include: [db.comment, db.listing],
     })
     .then((user) => {
       if (!user) throw Error();
       res.render("profile/index", {
-        id: users.id,
-        name: users.name,
-        email: users.email,
-        location: users.location,
-        listings: users.listings,
-        tags: users.tags,
+        user,
       });
     })
     .catch((error) => {
@@ -28,15 +21,15 @@ router.get("/", isLoggedIn, (req, res) => {
 });
 
 router.get("/listings/:id", isLoggedIn, (req, res) => {
-  db.listings
+  db.listing
     .findOne({
-      include: [db.comments],
+      include: [db.comment, db.item],
       where: { id: req.params.id },
     })
     .then((listing) => {
       if (!listing) throw Error();
       res.render("listings/listing", {
-        listing: listing,
+        listings: listings,
       });
     })
     .catch((error) => {
@@ -45,10 +38,10 @@ router.get("/listings/:id", isLoggedIn, (req, res) => {
 });
 
 router.get("/listings/:id/edit", isLoggedIn, (req, res) => {
-  db.listings
+  db.listing
     .findOne({
-      include: [db.comments, db.item],
-      where: { id: req.params.id },
+      include: [db.comment, db.item],
+      where: { id: req.params.name },
     })
     .then((listings) => {
       if (!listings) throw Error();
@@ -59,6 +52,10 @@ router.get("/listings/:id/edit", isLoggedIn, (req, res) => {
     .catch((error) => {
       res.status(400).render("home/404");
     });
+});
+
+router.get("/mail", isLoggedIn, (req, res) => {
+  res.render("/mail");
 });
 
 router.get("/listings/new", isLoggedIn, (req, res) => {

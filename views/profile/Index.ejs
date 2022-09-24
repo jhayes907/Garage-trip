@@ -1,8 +1,9 @@
 <h3>Welcome to your PROFILE</h3>
 
-<p>Id: <%= id %></p>
-<p>Name: <%= name %></p>
-<p>Email: <%= email %></p>
+<p>Id: <%= user.id %></p>
+<p>Name: <%= user.name %></p>
+<p>Email: <%= user.email %></p>
+
 
 
 <form method="GET" action="/lisitngs/listing">
@@ -11,11 +12,14 @@
     <input type="submit">
 </form>
 
-<form method="GET" action="/lisitngs/edit">
+<!-- <form method="GET" action="/lisitngs/edit">
     <label for="editListing">Edit listing</label>
     <input id="editListing" type="text" name="editListing">
     <input type="submit">
-</form>
+</form> -->
+<!-- <a class="btn btn-success" href="./listings/listing">Find Listing</a> -->
+
+<a class="btn btn-success" href="./listings/edit">Edit Listing</a>
 
 <a class="btn btn-success" href="./listings/new">Create Listing</a>
 
@@ -26,11 +30,11 @@
             <th>Name</th>
         </thead>
         <tbody>
-            <% if(Array.isArray(listings) && listings.length > 0) { %>
-                <% listings.forEach((listing) => { %>
+            <% if(Array.isArray(user.listings) && user.listings.length > 0) { %>
+                <% user.listings.forEach((listing) => { %>
                     <tr> 
-                        <td><a href="/listings/listing<%= listings.id %>">
-                            <%= listings.name %>
+                        <td><a href="/listings/listing/<%= listing.id %>">
+                            <%= listing.name %>
                         </a></td>
                     </tr>
                 <% }) %>

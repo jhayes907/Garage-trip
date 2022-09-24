@@ -9,15 +9,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.comment.belongsToOne(models.item),
-      models.comment.belongsToOne(models.listing),
-      models.comment.belongsToOne(models.user)
+      models.comment.belongsTo(models.item),
+      models.comment.belongsTo(models.listing),
+      models.comment.belongsTo(models.user)
     }
   }
   comment.init(
     {
       userId: DataTypes.INTEGER,
       listingId: DataTypes.INTEGER,
+      itemId: DataTypes.INTEGER,
       name: DataTypes.STRING,
       content: DataTypes.TEXT,
     },

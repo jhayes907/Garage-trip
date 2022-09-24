@@ -55,10 +55,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  db.listings
+  db.listing
     .findOne({
-      include: [db.listings],
-      where: { id: req.listings.id },
+      include: [db.listing],
+      where: { id: req.listing.id },
       limit: 5,
       order: [["updatedAt", "DESC"]],
     })
@@ -86,7 +86,7 @@ app.use("/404", require("./controllers/404"));
 
 app.use("/profile", require("./controllers/profile"));
 
-app.use("/listing", require("./controllers/listing"));
+app.use("/listings", require("./controllers/listing"));
 
 app.use("/browse", require("./controllers/browse"));
 

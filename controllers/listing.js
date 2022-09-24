@@ -1,24 +1,36 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
-router.get("/:id", (req, res) => {
-  db.listings
+router.get("/:id/listing", (req, res) => {
+  db.listing
     .findOne({
-      where: { name: req.query.name },
-      include: [db.listings, db.comments, db.items],
+      where: { name: req.params.name },
+      include: [db.listingId, db.listing, db.item, db.comment],
     })
     .then((listings) => {
-      res.render("browse/index", { listings: listings });
+      res.render("listings/listing", { listings: listings });
     })
     .catch((error) => {
       res.status(404).render("home/404");
     });
 });
 
-// router.get("/:id", (req, res) => {
-//   db.listing.findOne({ id: req.params.id });
+router.get("/new", isLoggedIn, (req, res) => {
+  res.render("listings/new");
+});
 
+// router.delete("/:id/", isLoggedIn, (req, res) => {
+//  db.listing
+//   .findOne ({
+//     where: { id: req.params.id },
+//   })
+//   .then((listing) => {
+//   })
+//   .catch((error) => {
+//     res.status(404).render("home/404");
+//   })
 // });
 
 module.exports = router;

@@ -1,11 +1,13 @@
 <div class="newListing">
-    <form method="POST" action="/profile/listings/<%=creatId%>/?_method=PUT">
+    <form method="POST" action="/listings/<%=listing.id%>/?_method=PUT">
         <label>Name</label>
-        <input type="text" name="name" value="<%= listings.name %>">
+        <input type="text" name="name" value="<%= listing.name %>">
         <label>Location</label>
-        <input type="text" name="location" value="<%= listings.location %>">
+        <input type="text" name="location" value="<%= listing.location %>">
         <label>Tags</label>
-        <input type="text" name="tags" value="<%= listings.tags %>">
+        <input type="text" name="tags" value="<%= listing.tags %>">
         <input type="submit">
+        <label>Content</label>
+        <input type="text" name="content" value="<%= listing.content %>">
     </form>
 </div>

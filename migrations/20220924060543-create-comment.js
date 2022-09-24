@@ -14,6 +14,9 @@ module.exports = {
       listingId: {
         type: Sequelize.INTEGER
       },
+      itemId: {
+        type: Sequelize.INTEGER
+      },
       name: {
         type: Sequelize.STRING
       },
