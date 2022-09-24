@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.user.hasMany(models.listing);
-      models.user.hasMany(models.comments);
-      models.user.hasMany(models.items);
+        models.user.hasMany(models.listing),
+        models.user.hasMany(models.item),
+        models.user.hasMany(models.comment);
     }
   }
 
@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+
+      location: DataTypes.STRING,
+
       email: {
         type: DataTypes.STRING,
         validate: {

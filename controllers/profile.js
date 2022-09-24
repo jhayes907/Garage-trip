@@ -4,21 +4,22 @@ const db = require("../models");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/", isLoggedIn, (req, res) => {
-  db.user
+  db.users
     .findOne({
-      include: [db.comments, db.listing],
-      where: { id: req.user.id },
+      include: [db.comments, db.listings],
+      where: { id: req.users.id },
       limit: 5,
       order: [["updatedAt", "DESC"]],
     })
     .then((user) => {
       if (!user) throw Error();
       res.render("profile/index", {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        listings: user.listings,
-        tags: user.tags,
+        id: users.id,
+        name: users.name,
+        email: users.email,
+        location: users.location,
+        listings: users.listings,
+        tags: users.tags,
       });
     })
     .catch((error) => {
@@ -26,15 +27,15 @@ router.get("/", isLoggedIn, (req, res) => {
     });
 });
 
-router.get("/listing/:id", isLoggedIn, (req, res) => {
-  db.listing
+router.get("/listings/:id", isLoggedIn, (req, res) => {
+  db.listings
     .findOne({
       include: [db.comments],
       where: { id: req.params.id },
     })
     .then((listing) => {
       if (!listing) throw Error();
-      res.render("profile/listings/listing", {
+      res.render("listings/listing", {
         listing: listing,
       });
     })
@@ -43,16 +44,16 @@ router.get("/listing/:id", isLoggedIn, (req, res) => {
     });
 });
 
-router.get("/listing/:id/edit", isLoggedIn, (req, res) => {
-  db.listing
+router.get("/listings/:id/edit", isLoggedIn, (req, res) => {
+  db.listings
     .findOne({
-      include: [db.comments],
+      include: [db.comments, db.item],
       where: { id: req.params.id },
     })
-    .then((listing) => {
-      if (!listing) throw Error();
-      res.render("profile/listings/edit", {
-        listing: listing,
+    .then((listings) => {
+      if (!listings) throw Error();
+      res.render("listings/edit", {
+        listings: listings,
       });
     })
     .catch((error) => {
@@ -60,7 +61,7 @@ router.get("/listing/:id/edit", isLoggedIn, (req, res) => {
     });
 });
 
-router.get("/listing/new", isLoggedIn, (req, res) => {
+router.get("/listings/new", isLoggedIn, (req, res) => {
   res.render("/listings/new");
 });
 

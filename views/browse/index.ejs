@@ -13,12 +13,13 @@
           <% if(Array.isArray(listings) && listings.length > 0) { %>
               <% listings.forEach((listing) => { %>
                   <tr> 
-                      <td><a href="/browse/show/<%= listing.id %>">
-                          <%= listing.name %>
+                      <td><a href="/browse/show/<%= listings.id %>">
+                          <%= listings.name %>
                       </a></td>
-                      <td><%= listing.id %></td>
-                      <td><%= listing.location %></td>
-                      <td><%= listing.tags %></td>
+                      <td><%= listings.id %></td>
+                      <td><%= listings.location %></td>
+                      <td><%= listings.tags %></td>
+                      <td><%= listings.content %></td>
                   </tr>
               <% }) %>
           <% } %>

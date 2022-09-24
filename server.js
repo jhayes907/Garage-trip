@@ -8,7 +8,7 @@ const rowdyResults = rowdy.begin(app);
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("./config/ppConfig");
-const moment = require("moment");
+// const moment = require("moment");
 const db = require("./models");
 
 const isLoggedIn = require("./middleware/isLoggedIn");
@@ -24,10 +24,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
 app.use(layouts);
 
-app.use((req, res, next) => {
-  res.locals.moment = moment;
-  next();
-});
+// app.use((req, res, next) => {
+//   res.locals.moment = moment;
+//   next();
+// });
 
 app.use(flash());
 
@@ -55,17 +55,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  db.listing
+  db.listings
     .findOne({
-      include: [db.listing],
-      where: { id: req.listing.id },
+      include: [db.listings],
+      where: { id: req.listings.id },
       limit: 5,
       order: [["updatedAt", "DESC"]],
     })
     .then((listings) => {
       if (!listings) throw Error();
       res.render("home/index", {
-        listings,
+        //listings,
       });
     })
     .catch((error) => {
@@ -81,10 +81,12 @@ app.get("./index", isLoggedIn, (req, res) => {
 
 // access to all auth routes GET /auth/login, Get /auth/signup Post routes
 app.use("/auth", require("./controllers/auth"));
-// access to GET /404
+
 app.use("/404", require("./controllers/404"));
 
 app.use("/profile", require("./controllers/profile"));
+
+app.use("/listing", require("./controllers/listing"));
 
 app.use("/browse", require("./controllers/browse"));
 

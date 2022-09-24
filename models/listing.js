@@ -11,10 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.listing.belongsToOne(models.user),
+      models.listing.hasMany(models.item),
+      models.listing.hasMany(models.comment)
     }
   }
   listing.init({
-    userId: DataTypes.INTEGER,
+    userId: DataTypes.STRING,
     name: DataTypes.STRING,
     location: DataTypes.STRING,
     tags: DataTypes.STRING,

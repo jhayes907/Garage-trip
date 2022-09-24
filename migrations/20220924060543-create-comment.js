@@ -8,17 +8,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.STRING
-      },
-      body: {
-        type: Sequelize.STRING
-      },
       userId: {
         type: Sequelize.INTEGER
       },
       listingId: {
         type: Sequelize.INTEGER
+      },
+      name: {
+        type: Sequelize.STRING
+      },
+      content: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

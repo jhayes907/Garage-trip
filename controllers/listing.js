@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 
-router.get("/", (req, res) => {
-  db.listing
+router.get("/:id", (req, res) => {
+  db.listings
     .findOne({
       where: { name: req.query.name },
-      include: [db.listing],
+      include: [db.listings, db.comments, db.items],
     })
     .then((listings) => {
       res.render("browse/index", { listings: listings });

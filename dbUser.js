@@ -5,10 +5,11 @@ const db = require("./models");
 // CREATE
 async function createUser() {
   try {
-    const newUser = await db.user.create({
-      name: "My Name",
-      email: "myemail@gmail.com",
-      password: "password",
+    const newUser = await db.users.create({
+      name: "Jared Hayes",
+      location: "Minnesota",
+      email: "jhayes907@gmail.com",
+      password: "1234admin",
     });
     console.log("my new user >>>", newUser);
   } catch (error) {
@@ -22,8 +23,8 @@ createUser();
 // find one user
 async function findOneUser() {
   try {
-    const user = await db.user.findOne({
-      where: { id: 1 },
+    const user = await db.users.findOne({
+      where: { name: "Jared Hayes" },
     });
     console.log("current user here >>>", user);
   } catch (error) {
@@ -31,11 +32,12 @@ async function findOneUser() {
   }
 }
 // @todo run findOneUser function below
+// findOneUser();
 
 // find all users
 async function findAllUsers() {
   try {
-    const users = await db.user.findAll();
+    const users = await db.users.findAll();
     console.log("all users here >>>", users);
   } catch (error) {
     console.log("did not find all users because of >>>", error);
@@ -46,8 +48,8 @@ async function findAllUsers() {
 // find one user
 async function findOrCreate() {
   try {
-    const users = await db.user.findOrCreate({
-      where: { email: "brainsmith@gmail.com" },
+    const users = await db.users.findOrCreate({
+      where: { email: "briansmith@gmail.com" },
       defaults: {
         name: "Brian Smith",
       },
@@ -62,13 +64,13 @@ async function findOrCreate() {
 // UPDATE
 async function updateUser() {
   try {
-    const numRowsUpdated = await db.user.update(
+    const numRowsUpdated = await db.users.update(
       {
-        name: "Brain Taco",
+        name: "Brian Taco",
       },
       {
         where: {
-          email: "brainsmith@gmail.com",
+          email: "briansmith@gmail.com",
         },
       }
     );
@@ -82,11 +84,12 @@ async function updateUser() {
 // DELETE
 async function deleteUser() {
   try {
-    let numOfRowsDeleted = await db.user.destroy({
-      where: { email: "brainsmith@gmail.com" },
+    let numOfRowsDeleted = await db.users.destroy({
+      where: { name: "Jared Hayes" },
     });
     console.log("number of rows deleted >>>", numOfRowsDeleted);
   } catch (error) {
     console.log("did not delete user(s) because of >>>", error);
   }
 }
+// deleteUser();

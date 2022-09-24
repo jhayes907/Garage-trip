@@ -9,18 +9,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.items.belongsTo(models.listing);
-      models.items.belongsTo(models.user);
-      models.items.hasMany(models.comments);
+        models.item.belongsTo(models.listing),
+        models.item.belongsToOne(models.user),
+        models.item.hasMany(models.comment)
     }
   }
   item.init(
     {
-      listingId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER,
+      listingId: DataTypes.INTEGER,
       name: DataTypes.STRING,
+      location: DataTypes.STRING,
       tags: DataTypes.STRING,
-      description: DataTypes.TEXT,
+      content: DataTypes.TEXT,
     },
     {
       sequelize,

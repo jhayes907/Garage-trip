@@ -1,8 +1,8 @@
 const db = require("./models");
 
-async function createItems() {
+async function createItem() {
   try {
-    const newItems = await db.items.create({
+    const newItems = await db.item.create({
       name: "vinyl records",
       tags: "vinyl",
       userId: 1,
@@ -14,4 +14,4 @@ async function createItems() {
   }
 }
 // @todo run createUser function below
-createItems();
+createItem();

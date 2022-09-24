@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../models");
 
 router.get("/", (req, res) => {
-  db.listing
+  db.listings
     .findAll()
     .then((listings) => {
       res.render("browse/index", { listings: listings });
