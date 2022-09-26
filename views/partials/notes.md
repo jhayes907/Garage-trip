@@ -47,3 +47,21 @@
         </tbody>
     </table>
   </div> -->
+
+app.get('/profile/edit', isLoggedIn, (req, res) => {
+   res.render('/profile') 
+})
+
+app.put('/profile/:id', isLoggedIn, async(req, res) => {
+    try {
+        const userUpdated = await
+        db.user.update({
+            email: req.body.email,
+            name: req.body.name
+        }, {
+            where: {
+                id: req.params.id
+        }
+    });
+    res.redirect('/profile')
+})

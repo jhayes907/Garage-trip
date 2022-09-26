@@ -1,13 +1,55 @@
-<div class="newListing">
-    <form method="POST" action="/listings/<%=listing.id%>/?_method=PUT">
-        <label>Name</label>
-        <input type="text" name="name" value="<%= listing.name %>">
-        <label>Location</label>
-        <input type="text" name="location" value="<%= listing.location %>">
-        <label>Tags</label>
-        <input type="text" name="tags" value="<%= listing.tags %>">
-        <input type="submit">
-        <label>Content</label>
-        <input type="text" name="content" value="<%= listing.content %>">
-    </form>
-</div>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>Signin Template · Bootstrap v5.2</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+
+    <!-- Bootstrap core CSS  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/login.css" rel="stylesheet">
+  </head>
+  <body>
+    <%- include('../partials/header') %> 
+
+    <br>
+    <br>
+    <br>
+
+    <main class="form-Listing w-25 m-auto">
+      <form action="/listings/new" method="POST">
+        <div class="form-floating">
+          <input type="name" class="form-control" id="floatingName" name="name"placeholder="Listing Name" required>
+          <label for="floatingName">Listing Name</label>
+        </div> 
+        <div class="form-floating">
+          <input type="location" class="form-control" id="floatingLocation" name="location"placeholder="location" required>
+          <label for="floatingLocation">Listing Address</label>
+        </div>
+        <div class="form-floating">
+            <input type="tags" class="form-control" id="floatingTags" name="tags" placeholder="Tags help people find your Items" >
+            <label for="floatingLocation">Tags</label>
+        </div>
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" required>
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="password"placeholder="Password" required>
+            <label for="floatingPassword">Password</label>
+        </div>
+        
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Create</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+      </form>
+    </main>
+  </body>
+</html>

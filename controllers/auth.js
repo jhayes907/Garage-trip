@@ -32,11 +32,11 @@ router.post(
 //  /auth/signup routes
 router.post("/signup", async (req, res) => {
   // we now have access to the userss info (req.body);
-  const { email, name, password } = req.body; // goes and us access to whatever key/value inside of the object
+  const { name, location, email, password } = req.body; // goes and us access to whatever key/value inside of the object
   try {
     const [user, created] = await db.user.findOrCreate({
       where: { email },
-      defaults: { name, password },
+      defaults: { name, password, location},
     });
 
     if (created) {

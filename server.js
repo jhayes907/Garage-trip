@@ -8,6 +8,7 @@ const rowdyResults = rowdy.begin(app);
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("./config/ppConfig");
+const methodOverride = require("method-override");
 // const moment = require("moment");
 const db = require("./models");
 
@@ -18,8 +19,8 @@ const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log("yoooooooo.......>>>", SECRET_SESSION);
 
 app.set("view engine", "ejs");
-
 app.use(require("morgan")("dev"));
+app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
 app.use(layouts);
@@ -86,7 +87,7 @@ app.use("/404", require("./controllers/404"));
 
 app.use("/profile", require("./controllers/profile"));
 
-app.use("/listings", require("./controllers/listing"));
+app.use("/listing", require("./controllers/listing"));
 
 app.use("/browse", require("./controllers/browse"));
 

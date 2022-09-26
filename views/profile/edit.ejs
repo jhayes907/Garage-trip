@@ -1,13 +1,11 @@
 <h1>Edit</h1>
 
-<p>Id: <%= id %></p>
-<p>Name: <%= name %></p>
-<p>Email: <%= email %></p>
-
-<form method="POST" action="/profile/<%=user.id%>/?_method=PUT">
+<form method="POST" action="/profile/edit?_method=PUT">
     <label>Name</label>
     <input type="text" name="name" value="<%= user.name %>">
+    <label>Location</label>
+    <input type="text" name="location" value="<%= user.location %>">
     <label>Email</label>
-    <input type="text" name="type" value="<%= user.email %>">
-    <input type="submit">
+    <input type="text" name="email" value="<%= user.email %>">
+    <button type="submit">Submit</button>
 </form>

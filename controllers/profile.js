@@ -23,7 +23,7 @@ router.get("/", isLoggedIn, (req, res) => {
 router.get("/listings/:id", isLoggedIn, (req, res) => {
   db.listing
     .findOne({
-      include: [db.comment, db.item],
+      include: [db.listing],
       where: { id: req.params.id },
     })
     .then((listing) => {
@@ -37,16 +37,15 @@ router.get("/listings/:id", isLoggedIn, (req, res) => {
     });
 });
 
-router.get("/listings/:id/edit", isLoggedIn, (req, res) => {
-  db.listing
+router.get("/edit", isLoggedIn, (req, res) => {
+  db.user
     .findOne({
-      include: [db.comment, db.item],
-      where: { id: req.params.name },
+      where: { id: req.user.id },
     })
-    .then((listings) => {
-      if (!listings) throw Error();
-      res.render("listings/edit", {
-        listings: listings,
+    .then((user) => {
+      if (!user) throw Error();
+      res.render("profile/edit", {
+        user,
       });
     })
     .catch((error) => {
@@ -54,8 +53,25 @@ router.get("/listings/:id/edit", isLoggedIn, (req, res) => {
     });
 });
 
+router.put("/edit", isLoggedIn, (req, res) => {
+  db.user
+   .update({
+      name: req.body.name,
+      location: req.body.location,
+      email: req.body.email,
+   },{
+    where: { id: req.user.id },
+   })
+   .then((user) => {
+    res.redirect("/profile")
+   })
+    .catch((error) => {
+      res.status(400).render("home/404");
+    });
+});
+
 router.get("/mail", isLoggedIn, (req, res) => {
-  res.render("/mail");
+  res.render("profile/mail");
 });
 
 router.get("/listings/new", isLoggedIn, (req, res) => {

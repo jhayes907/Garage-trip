@@ -1,9 +1,10 @@
 nav ul li {
   text-decoration: none;
-  display: inline-block;
+  display: block;
   margin-right: .3em;
 }
 
 h1 {
-  color: chartreuse;
+  text-align: center;
+  color: black;
 }

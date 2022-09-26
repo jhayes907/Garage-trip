@@ -10,7 +10,7 @@ router.get("/:id/listing", (req, res) => {
       include: [db.listingId, db.listing, db.item, db.comment],
     })
     .then((listings) => {
-      res.render("listings/listing", { listings: listings });
+      res.render("/listing", { listings: listings });
     })
     .catch((error) => {
       res.status(404).render("home/404");
@@ -20,6 +20,11 @@ router.get("/:id/listing", (req, res) => {
 router.get("/new", isLoggedIn, (req, res) => {
   res.render("listings/new");
 });
+
+router.get("/:id/edit", (req, res) => {
+  res.render("listings/edit");
+})
+
 
 // router.delete("/:id/", isLoggedIn, (req, res) => {
 //  db.listing
