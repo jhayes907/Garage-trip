@@ -3,6 +3,12 @@ const router = express.Router();
 const db = require("../models");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
+
+// Get Routes 
+router.get("/mail", isLoggedIn, (req, res) => {
+  res.render("profile/mail");
+});
+
 router.get("/", isLoggedIn, (req, res) => {
   db.user
     .findOne({
@@ -18,8 +24,11 @@ router.get("/", isLoggedIn, (req, res) => {
     .catch((error) => {
       res.status(400).render("home/404");
     });
-});
-
+  });
+  router.get("/new", isLoggedIn, (req, res) => {
+    res.render("listings/new");
+  });
+  
 router.get("/listings/:id", isLoggedIn, (req, res) => {
   db.listing
     .findOne({
@@ -28,7 +37,7 @@ router.get("/listings/:id", isLoggedIn, (req, res) => {
     })
     .then((listing) => {
       if (!listing) throw Error();
-      res.render("listings/listing", {
+      res.render("/profile", {
         listings: listings,
       });
     })
@@ -55,29 +64,25 @@ router.get("/edit", isLoggedIn, (req, res) => {
 
 router.put("/edit", isLoggedIn, (req, res) => {
   db.user
-   .update({
-      name: req.body.name,
-      location: req.body.location,
-      email: req.body.email,
-   },{
-    where: { id: req.user.id },
-   })
-   .then((user) => {
-    res.redirect("/profile")
-   })
+    .update(
+      {
+        name: req.body.name,
+        location: req.body.location,
+        email: req.body.email,
+      },
+      {
+        where: { id: req.user.id },
+      }
+    )
+    .then((user) => {
+      res.redirect("/profile");
+    })
     .catch((error) => {
       res.status(400).render("home/404");
     });
 });
 
-router.get("/mail", isLoggedIn, (req, res) => {
-  res.render("profile/mail");
-});
-
-router.get("/listings/new", isLoggedIn, (req, res) => {
-  res.render("/listings/new");
-});
-
+// Edit profile route
 router.post("/profile/:id/edit", isLoggedIn, (req, res) => {
   res.render("profile/edit", {
     editProfile: {

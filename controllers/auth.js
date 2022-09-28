@@ -14,7 +14,7 @@ router.get("/login", (req, res) => {
 router.get("/logout", (req, res) => {
   req.logOut(() => {
     console.log("I am logged out");
-  }); // logs the userss out of the session
+  }); // logs the user out of the session
   req.flash("success", "Logging out... See you next time!");
   res.redirect("/");
 });
@@ -31,12 +31,12 @@ router.post(
 
 //  /auth/signup routes
 router.post("/signup", async (req, res) => {
-  // we now have access to the userss info (req.body);
-  const { name, location, email, password } = req.body; // goes and us access to whatever key/value inside of the object
+  // we now have access to the user info (req.body);
+  const { email, name, password } = req.body; // goes and us access to whatever key/value inside of the object
   try {
     const [user, created] = await db.user.findOrCreate({
       where: { email },
-      defaults: { name, password, location},
+      defaults: { name, password },
     });
 
     if (created) {
@@ -51,10 +51,10 @@ router.post("/signup", async (req, res) => {
     } else {
       // Send back email already exists
       req.flash("error", "Email already exists");
-      res.redirect("/auth/signup"); // redirect the users back to sign up page to try again
+      res.redirect("/auth/signup"); // redirect the user back to sign up page to try again
     }
   } catch (error) {
-    // There was an error that came back; therefore, we just have the users try again
+    // There was an error that came back; therefore, we just have the user try again
     console.log("**************Error");
     console.log(error);
     req.flash(

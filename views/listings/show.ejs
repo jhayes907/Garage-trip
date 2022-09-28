@@ -1,0 +1,18 @@
+<%- include('../partials/header') %> 
+
+<h3>Your listings</h3>
+<p>This page is where you will find a record of all listings and items you have posted. You can add, edit, and delete listings from this page.</p>
+
+</br>
+
+<div class="editListing">
+    <%= listing.name %> 
+    <%= listing.location %> 
+    <%= listing.tags %> 
+</div>
+
+
+<a class="btn btn-warning" href="/listings/<%= listing.id%>/edit">Edit Listing</a>
+
+
+ 

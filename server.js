@@ -55,24 +55,24 @@ app.get("/", (req, res) => {
   res.render("home/index");
 });
 
-app.get("/", (req, res) => {
-  db.listing
-    .findOne({
-      include: [db.listing],
-      where: { id: req.listing.id },
-      limit: 5,
-      order: [["updatedAt", "DESC"]],
-    })
-    .then((listings) => {
-      if (!listings) throw Error();
-      res.render("home/index", {
-        //listings,
-      });
-    })
-    .catch((error) => {
-      res.status(400).render("home/404");
-    });
-});
+// app.get("/", (req, res) => {
+//   db.listing
+//     .findOne({
+//       include: [db.listing],
+//       where: { id: req.listing.id },
+//       limit: 5,
+//       order: [["updatedAt", "DESC"]],
+//     })
+//     .then((listings) => {
+//       if (!listings) throw Error();
+//       res.render("home/index", {
+//         //listings,
+//       });
+//     })
+//     .catch((error) => {
+//       res.status(400).render("home/404");
+//     });
+// });
 
 // Add this above /auth controllers
 app.get("./index", isLoggedIn, (req, res) => {
@@ -87,7 +87,7 @@ app.use("/404", require("./controllers/404"));
 
 app.use("/profile", require("./controllers/profile"));
 
-app.use("/listing", require("./controllers/listing"));
+app.use("/listings", require("./controllers/listings"));
 
 app.use("/browse", require("./controllers/browse"));
 

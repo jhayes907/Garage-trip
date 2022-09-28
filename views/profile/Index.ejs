@@ -1,47 +1,29 @@
+<%- include('../partials/header') %>
+<br>
+<body>
+    <%- include('../partials/hideProfile') %>  
+    <main>
+        <div class="row">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>Name</th>
+                </thead>
+                <tbody>
+                    <% if(Array.isArray(user.listings) && user.listings.length > 0) { %>
+                        <% user.listings.forEach((listing) => { %>
+                            <tr> 
+                                <td><a href="/listings/listing/<%= listing.id %>">
+                                    <td><%= listing.name %></td>
+                                    <td><%= listing.location %></td>
+                                    <td><%= listing.content %></td>  
+                                </a></td>
+                            </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div> 
+    </main>
+</body>
 
-<%- include('../partials/header') %> 
-<%- include('../partials/hideProfile') %>
 
-
-
-
-<p>Id: <%= user.id %></p>
-<p>Name: <%= user.name %></p>
-<p>Email: <%= user.email %></p>
-
-
-
-<form method="GET" action="/lisitngs/listing">
-    <label for="nameFilter">Get by listing name</label>
-    <input id="nameFilter" type="text" name="nameFilter">
-    <input type="submit">
-</form>
-
-<!-- <form method="GET" action="/lisitngs/edit">
-    <label for="editListing">Edit listing</label>
-    <input id="editListing" type="text" name="editListing">
-    <input type="submit">
-</form> -->
-<!-- <a class="btn btn-success" href="./listings/listing">Find Listing</a> -->
-
-
-
-<div></div>
-<div class="row">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <th>Name</th>
-        </thead>
-        <tbody>
-            <% if(Array.isArray(user.listings) && user.listings.length > 0) { %>
-                <% user.listings.forEach((listing) => { %>
-                    <tr> 
-                        <td><a href="/listings/listing/<%= listing.id %>">
-                            <%= listing.name %>
-                        </a></td>
-                    </tr>
-                <% }) %>
-            <% } %>
-        </tbody>
-    </table>
-  </div> 

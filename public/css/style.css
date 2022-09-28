@@ -8,3 +8,10 @@ h1 {
   text-align: center;
   color: black;
 }
+
+/* Sticky-footer CSS */
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
