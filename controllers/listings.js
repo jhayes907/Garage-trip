@@ -13,14 +13,14 @@ router.get("/:id/edit", isLoggedIn, (req, res) => {
   res.render("listings/edit");
 });
 
-router.get("/:id/delete", isLoggedIn, (req, res) => {
-  res.render("listings/delete");
-});
 
 router.get("/myListings", isLoggedIn, (req, res) => {
   res.render("listings/myListings");
 });
 
+router.get("/:id/delete", isLoggedIn, (req, res) => {
+  res.render("listing/delete");
+});
 
 router.get("/:id/show", (req, res) => {
   db.listing
@@ -89,14 +89,18 @@ router.post("/listings/:id/edit", isLoggedIn, (req, res) => {
 });
 
 // Delete a listing
-router.delete("/delete", isLoggedIn, (req, res) => {
+router.post("/:id/delete", isLoggedIn, (req, res) => {
   db.listing
   .delete({
-    where: { id: req.params.id },
-    include: [db.listing],
-  })
+      name: req.body.name,
+      location: req.body.location,
+      email: req.body.email,
+  },{ 
+    where: { id: req.user.id },
+  }
+  )
   .then((listing) => {
-    if (!user) throw error;
+    if (!listing) throw error;
     res.redirect("listings/myListings");
   })
   .catch((error) => {

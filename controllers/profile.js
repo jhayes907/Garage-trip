@@ -75,6 +75,7 @@ router.put("/edit", isLoggedIn, (req, res) => {
       }
     )
     .then((user) => {
+      if (!user) throw Error();
       res.redirect("/profile");
     })
     .catch((error) => {
