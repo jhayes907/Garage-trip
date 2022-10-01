@@ -20,24 +20,26 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="/dev" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Dev Page</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="dev/about">About</a></li>
-              <li><a class="dropdown-item" href="dev/contact">Contact</a></li>
-              <li><a class="dropdown-item" href="dev/feedback">Feedback</a></li>
+              <li><a class="dropdown-item" href="/dev/about">About</a></li>
+              <li><a class="dropdown-item" href="/dev/contact">Contact</a></li>
+              <li><a class="dropdown-item" href="/dev/feedback">Feedback</a></li>
             </ul>
           </li>
+
           <% if(!currentUser) { %> 
           <li class="nav-item">
-            <a class="nav-link active" href="auth/login">LogIn</a>
+            <a class="nav-link active" href="/auth/login">LogIn</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="auth/signup">SignUp</a>
+            <a class="nav-link active" href="/auth/signup">SignUp</a>
           </li>
           <% } else { %> 
           <li class="nav-item">
-            <a class="nav-link active" href="auth/logout">LogOut</a>
+            <a class="nav-link active" href="/auth/logout">LogOut</a>
           </li>
           <% } %> 
         </ul>
+       
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>

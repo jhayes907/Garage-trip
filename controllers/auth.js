@@ -23,7 +23,7 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/profile",
-    failureRedirect: "auth/login",
+    failureRedirect: "/auth/login",
     successFlash: "Welcome back ...",
     failureFlash: "Either email or password is incorrect",
   })
@@ -40,7 +40,7 @@ router.post("/signup", async (req, res) => {
     });
 
     if (created) {
-      // if created, success and we will redirect back to / page
+      // if created, success and we will redirect back to /profile page
       console.log(`----- ${user.name} was created -----`);
       const successObject = {
         successRedirect: "/profile",
@@ -51,7 +51,7 @@ router.post("/signup", async (req, res) => {
     } else {
       // Send back email already exists
       req.flash("error", "Email already exists");
-      res.redirect("auth/signup"); // redirect the user back to sign up page to try again
+      res.redirect("/auth/signup"); // redirect the user back to sign up page to try again
     }
   } catch (error) {
     // There was an error that came back; therefore, we just have the user try again
@@ -61,7 +61,7 @@ router.post("/signup", async (req, res) => {
       "error",
       "Either email or password is incorrect. Please try again."
     );
-    res.redirect("auth/signup");
+    res.redirect("/auth/signup");
   }
 });
 

@@ -1,9 +1,13 @@
-<%- include('../partials/header') %>
+<div>
+    <%- include('../partials/header') %>
+    <%- include('../partials/hideBrowse') %>   
+</div>
+
 
 <body>
     <br>
     <br>
-<%- include('../partials/hideBrowse') %>  
+ 
     <main class="container-fluid">
         <% if(Array.isArray(listings) && listings.length > 0) { %>
         <% listings.forEach((listing) => { %>

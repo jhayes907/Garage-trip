@@ -13,9 +13,4 @@ router.get("/", (req, res) => {
     });
 });
 
-// router.get("/:id", (req, res) => {
-//   db.listing.findOne({ id: req.params.id });
-
-// });
-
 module.exports = router;
