@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
       res.render("browse/index", { listings: listings });
     })
     .catch((error) => {
-      res.status(404).render("home/404");
+      res.status(404).render("404");
     });
 });
 

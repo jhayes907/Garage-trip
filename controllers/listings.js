@@ -23,7 +23,7 @@ router.get("/myListings", isLoggedIn, (req, res) => {
       res.render("listings/myListings", { listings: listings });
     })
     .catch((err) => {
-      res.render("home/404");
+      res.render("404");
     });
 });
 
@@ -37,7 +37,7 @@ router.get("/:id/show", (req, res) => {
       res.render("listings/show", { listings: listings });
     })
     .catch((error) => {
-      res.status(404).render("home/404");
+      res.status(404).render("/404");
     });
 });
 
@@ -145,8 +145,22 @@ router.delete("/:id", isLoggedIn, (req, res) => {
       res.redirect("listings/myListings");
     })
     .catch((error) => {
-      res.status(404).render("home/404");
+      res.status(404).render("/404");
     });
 });
 
+router.delete('/:id/myListings', isLoggedIn, async (req, res) => {
+  try {
+    let deleteMylistings= await db.listing.destroy({
+      where: { id: req.params.id},
+    })
+    res.render('/myListings')
+  }
+  catch (error) {
+        console.log('*********************ERROR***********************');
+        console.log(error);
+        console.log('**************************************************');
+        res.render('...');
+  }
+})
 module.exports = router;

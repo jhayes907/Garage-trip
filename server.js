@@ -82,8 +82,6 @@ app.get("/index", isLoggedIn, (req, res) => {
 // access to all auth routes GET /auth/login, Get /auth/signup Post routes
 app.use("/auth", require("./controllers/auth"));
 
-app.use("/404", require("./controllers/404"));
-
 app.use("/profile", require("./controllers/profile"));
 
 app.use("/listings", require("./controllers/listings"));
@@ -95,6 +93,10 @@ app.use("/about", require("./controllers/about"));
 app.use("/contact", require("./controllers/contact"));
 
 app.use("/feedback", require("./controllers/feedback"));
+
+app.get('*', (req, res) => {
+  res.render('404');
+});
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {

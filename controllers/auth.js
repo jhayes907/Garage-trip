@@ -32,7 +32,7 @@ router.post(
 //  /auth/signup routes
 router.post("/signup", async (req, res) => {
   // we now have access to the user info (req.body);
-  const { email, name, password } = req.body; // goes and us access to whatever key/value inside of the object
+  const { email, name, password } = req.body; 
   try {
     const [user, created] = await db.user.findOrCreate({
       where: { email },
@@ -46,15 +46,13 @@ router.post("/signup", async (req, res) => {
         successRedirect: "/profile",
         successFlash: `Welcome ${user.name}. Account was created and logging in...`,
       };
-      //
+      
       passport.authenticate("local", successObject)(req, res);
     } else {
-      // Send back email already exists
       req.flash("error", "Email already exists");
-      res.redirect("/auth/signup"); // redirect the user back to sign up page to try again
+      res.redirect("/auth/signup"); 
     }
   } catch (error) {
-    // There was an error that came back; therefore, we just have the user try again
     console.log("**************Error");
     console.log(error);
     req.flash(

@@ -21,7 +21,7 @@ router.get("/", isLoggedIn, (req, res) => {
       });
     })
     .catch((error) => {
-      res.status(400).render("home/404");
+      res.status(400).render("/404");
     });
 });
 router.get("/new", isLoggedIn, (req, res) => {
@@ -41,7 +41,7 @@ router.get("/listings/:id", isLoggedIn, (req, res) => {
       });
     })
     .catch((error) => {
-      res.status(400).render("home/404");
+      res.status(400).render("/404");
     });
 });
 
@@ -57,7 +57,7 @@ router.get("/edit", isLoggedIn, (req, res) => {
       });
     })
     .catch((error) => {
-      res.status(400).render("home/404");
+      res.status(400).render("/404");
     });
 });
 
