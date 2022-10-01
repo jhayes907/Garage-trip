@@ -5,31 +5,12 @@
 <h1>Edit Page</h1>
 <body class="bg-light">
     <main class="container">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Name" aria-label="name" aria-describedby="button-addon2" value="<%= user.name %>">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Edit</button>
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Location" aria-label="Location " aria-describedby="button-addon2" value="<%= user.location %>">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Edit</button>
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="button-addon2" value="<%= user.email %>">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Edit</button>
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="button-addon2" value="">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Edit</button>
-        </div>
-
-        <!-- <form method="POST" action="/profile/edit?_method=PUT">
+        <form method="POST" action="/profile/<%= currentUser.id %>/?_method=PUT">
             <label>Name</label>
-            <input type="text" name="name" value="<%= user.name %>">
-            <label>Location</label>
-            <input type="text" name="location" value="<%= user.location %>">
+            <input type="text" name="name" value="<%= currentUser.name %>">
             <label>Email</label>
-            <input type="text" name="email" value="<%= user.email %>">
-            <button type="submit">Submit</button>
-        </form> -->
+            <input type="text" name="email" value="<%= currentUser.email %>">
+            <input type="submit">
+        </form>
     </main>
 </body>

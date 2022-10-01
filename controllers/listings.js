@@ -42,25 +42,58 @@ router.get("/:id/show", (req, res) => {
 });
 
 // Put routes
-router.put("/:id", isLoggedIn, (req, res) => {
-  db.listing
-    .update(
-      {
-        name: req.body.name,
-        location: req.body.location,
-        tags: req.body.tags,
-        content: req.body.content,
-      },
-      {
-        where: { id: req.listing.id },
+// router.put("/:id", isLoggedIn, (req, res) => {
+//   db.listing
+//     .update(
+//       {
+//         name: req.body.name,
+//         location: req.body.location,
+//         tags: req.body.tags,
+//         content: req.body.content,
+//       },
+//       {
+//         where: { id: req.listing.id },
+//       }
+//     )
+//     .then((req, res) => {
+//       res.redirect("listings/myListings");
+//     })
+//     .catch((error) => {
+//       res.status(400).render("home/404");
+//     });
+// });
+
+router.put('/:id', isLoggedIn, async (req, res) => {
+  try {
+      const foundListing = await db.listing.findOne({ where: { id: req.body.id }});
+      if (foundListing.name && foundListing.id !== req.listing.id) {
+        req.flash('error', 'Cannot edit this listing.');
+        res.redirect('/listings/myListings');
+      } else {
+        const listingUpdated = await db.listing.update({
+          name: req.body.name,
+          location: req.body.location,
+          tags: req.body.tags,
+          content: req.body.content
+        }, {
+          where: {
+            id: req.params.id
+          }
+        });
+
+        console.log('********** PUT ROUTE *************');
+        console.log('Listing updated', listingUpdated);
+        console.log('**************************************************');
+  
+        // redirect back to the profile page
+        res.redirect('/listings/mylistings'); // route
       }
-    )
-    .then((req, res) => {
-      res.redirect("/myListings");
-    })
-    .catch((error) => {
-      res.status(400).render("home/404");
-    });
+  } catch (error) {
+    console.log('*********************ERROR***********************');
+    console.log(error);
+    console.log('**************************************************');
+    res.render('listings/edit');
+  }
 });
 
 // Post routes for New Listing, and Edit Listing

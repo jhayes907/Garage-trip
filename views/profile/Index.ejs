@@ -6,7 +6,8 @@
         <div class="row">
             <table class="table table-bordered table-striped">
                 <thead>
-                    <th>Name</th>
+                    <th><%= currentUser.name %> </th>
+                    <th><%= currentUser.email %> </th>
                 </thead>
                 <tbody>
                     <% if(Array.isArray(user.listings) && user.listings.length > 0) { %>
