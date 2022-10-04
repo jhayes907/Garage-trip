@@ -1,17 +1,43 @@
-<div>
 <%- include('../partials/header') %> 
-</div>
+<%- include('../partials/header') %> 
+
 
 <h3>Your listings</h3>
 <p>This page is where you will find a record of all listings and items you have posted. You can add, edit, and delete listings from this page.</p>
 
 
-</br>
-    <div><%= listing.id %> </div>
-    <div><%= listing.name %></div> 
-    <div><%= listing.location %></div> 
-    <div><%= listing.tags %></div> 
+
+   
+ <th><%= currentUser.name %> </th>
+ <th><%= currentUser.email %> </th>
+    <main>
+        <div class="row">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <th>Delete</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Tags</th>
+                </thead>
+                <tbody>
+                    <% if(Array.isArray(listings) && listings.length > 0) { %>
+                        <% listings.forEach((listing) => { %>
+                            <tr> 
+                                <td><form action="/listings/<%= listing.id%>/myListings?_method=DELETE" method="POST">
+                                    <button class="btn btn-warning" type="submit">Delete listing</button>
+                                </form></td>
+                                <td><a href="/listings/<%= listing.id %>">
+                                   <%= listing.name %>
+                                </a></td>
+                                    <td><%= listing.location %></td>
+                                    <td><%= listing.tags %></td> 
+                            </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div> 
+    </main>
 
 
 
-<a class="btn btn-warning" href="/listings/<%= listing.id%>/edit">Edit Listing</a>

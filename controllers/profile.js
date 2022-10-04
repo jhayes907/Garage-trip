@@ -61,27 +61,6 @@ router.get("/edit", isLoggedIn, (req, res) => {
     });
 });
 
-// router.put("/edit", isLoggedIn, (req, res) => {
-//   db.user
-//     .update(
-//       {
-//         name: req.body.name,
-//         location: req.body.location,
-//         email: req.body.email,
-//       },
-//       {
-//         where: { id: req.user.id },
-//       }
-//     )
-//     .then((user) => {
-//       if (!user) throw Error();
-//       res.redirect("/profile");
-//     })
-//     .catch((error) => {
-//       res.status(400).render("home/404");
-//     });
-// });
-
 router.put('/:id', async (req, res) => {
   try {
         const foundUser = await db.user.findOne({ where: { email: req.body.email }});
@@ -124,7 +103,7 @@ router.put('/:id', async (req, res) => {
     }
   });
 
-// Edit profile route
+
 
 
 module.exports = router;

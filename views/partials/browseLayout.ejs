@@ -1,22 +1,6 @@
-<%- include('../partials/header') %>
-<%- include('../partials/hideBrowse') %>   
-
-<body> 
-     
+ 
 <body class="bg-light">
     <main class="container">
-        <% if(Array.isArray(listings) && listings.length > 0) { %>
-            <% listings.forEach((listing) => { %>
-                <tr> 
-                    <td><a href="/browse/<%= listing.id %>">
-                        <%= listing.name %>
-                    </a></td>
-                    <td><%= listing.id %></td>
-                    <td><%= listing.location %></td>
-                    <td><%= listing.tags %></td>
-                    <td><%= listing.content %></td>
-                </tr>
-            <% }) %>
       <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
       
         <div class="lh-1">
@@ -95,6 +79,4 @@
         </small>
       </div>
     </main>
-</body>   
-   
-
+  </body>

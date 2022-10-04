@@ -13,9 +13,10 @@
                     <% if(Array.isArray(user.listings) && user.listings.length > 0) { %>
                         <% user.listings.forEach((listing) => { %>
                             <tr> 
-                                <td><a href="/listings/listing/<%= listing.id %>">
+                                <td><a href="/listings/show/<%= listing.id %>">
                                     <td><%= listing.name %></td>
                                     <td><%= listing.location %></td>
+                                    <td><%= listing.tags %></td>
                                     <td><%= listing.content %></td>  
                                 </a></td>
                             </tr>

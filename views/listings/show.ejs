@@ -1,7 +1,31 @@
 <%- include('../partials/header') %> 
 </br>
 <h3>Display individual listings here for guests who are not signed up.</h3>
-
+<body class="container-fluid">
+  <main class="form-Listing w-25 m-auto">
+    <form action="/listings/show<%= listing.id %>/edit?_method=PUT" method="POST">
+      <div class="form-floating">
+        <input type="name" class="form-control" id="floatingName" name="name" value="<%= listing.name %>">
+        <label for="Name">Listing Name</label>
+      </div> 
+      <div class="form-floating">
+        <input type="location" class="form-control" id="floatingLocation" name="location" value="<%= listing.location %>" >
+        <label for="Location">Listing Address</label>
+      </div>
+      <div class="form-floating">
+          <input type="tags" class="form-control" id="floatingTags" name="tags" value="<%= listing.tags %>">
+          <label for="Tags">Tags</label>
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">What are you Listing?</label>
+        <textarea class="form-control" name="content" id="Content" value="<%= listing.content %>" rows="3"></textarea>
+      </div>
+     
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Edit</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+    </form>
+  </main>
+</body>
 
 
 

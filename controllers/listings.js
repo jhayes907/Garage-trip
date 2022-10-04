@@ -9,14 +9,27 @@ router.get("/new", isLoggedIn, (req, res) => {
 });
 
 router.get("/:id/edit", isLoggedIn, (req, res) => {
-  res.render("listings/edit");
+  db.listing
+    .findOne({
+      where: { id: parseInt(req.params.id) },
+    })
+    .then((listing) => {
+      res.render("listings/edit", { listing: listing });
+    })
+    .catch((error) => {
+      res.status(404).render("404");
+    });
 });
+
+// router.get("/myListings", isLoggedIn, (req, res) => {
+//   res.render("listings/myListings");
+// });
 
 router.get("/myListings", isLoggedIn, (req, res) => {
   db.listing
     .findAll({
-      where: { id: req.params.id },
-      include: [db.id, db.listing, db.items],
+      where: { userId: req.user.id },
+      include: [db.item, db.comment],
     })
     .then((listings) => {
       if (!listings) throw Error();
@@ -27,72 +40,55 @@ router.get("/myListings", isLoggedIn, (req, res) => {
     });
 });
 
-router.get("/:id/show", (req, res) => {
+router.get("/:id", (req, res) => {
   db.listing
     .findOne({
-      where: { name: req.params.id },
-      include: [db.listing, db.item, db.comment],
+      where: { id: parseInt(req.params.id) },
+      include: [db.item, db.comment],
     })
     .then((listings) => {
       res.render("listings/show", { listings: listings });
     })
     .catch((error) => {
-      res.status(404).render("/404");
+      res.status(404).render("404");
     });
 });
 
-// Put routes
-// router.put("/:id", isLoggedIn, (req, res) => {
-//   db.listing
-//     .update(
-//       {
-//         name: req.body.name,
-//         location: req.body.location,
-//         tags: req.body.tags,
-//         content: req.body.content,
-//       },
-//       {
-//         where: { id: req.listing.id },
-//       }
-//     )
-//     .then((req, res) => {
-//       res.redirect("listings/myListings");
-//     })
-//     .catch((error) => {
-//       res.status(400).render("home/404");
-//     });
-// });
-
-router.put('/:id', isLoggedIn, async (req, res) => {
+router.put("/:id/edit", isLoggedIn, async (req, res) => {
   try {
-      const foundListing = await db.listing.findOne({ where: { id: req.body.id }});
-      if (foundListing.name && foundListing.id !== req.listing.id) {
-        req.flash('error', 'Cannot edit this listing.');
-        res.redirect('/listings/myListings');
-      } else {
-        const listingUpdated = await db.listing.update({
+    const foundListing = await db.listing.findOne({
+      where: { id: req.body.id },
+    });
+    if (foundListing.name && foundListing.id !== req.listing.id) {
+      req.flash("error", "Cannot edit this listing.");
+      res.redirect("/listings/myListings");
+    } else {
+      const listingUpdated = await db.listing.update(
+        {
           name: req.body.name,
           location: req.body.location,
           tags: req.body.tags,
-          content: req.body.content
-        }, {
+          content: req.body.content,
+        },
+        {
           where: {
-            id: req.params.id
-          }
-        });
+            id: req.params.id,
+          },
+        }
+      );
 
-        console.log('********** PUT ROUTE *************');
-        console.log('Listing updated', listingUpdated);
-        console.log('**************************************************');
-  
-        // redirect back to the profile page
-        res.redirect('/listings/mylistings'); // route
-      }
+      console.log("********** PUT ROUTE *************");
+      console.log("Listing updated", listingUpdated);
+      console.log("**************************************************");
+
+      // redirect back to the profile page
+      res.redirect("/listings/mylistings"); // route
+    }
   } catch (error) {
-    console.log('*********************ERROR***********************');
+    console.log("*********************ERROR***********************");
     console.log(error);
-    console.log('**************************************************');
-    res.render('listings/edit');
+    console.log("**************************************************");
+    res.render("listings/edit");
   }
 });
 
@@ -101,6 +97,7 @@ router.post("/new", isLoggedIn, (req, res) => {
   db.listing
     .create(
       {
+        userId: req.user.id,
         name: req.body.name,
         location: req.body.location,
         tags: req.body.tags,
@@ -118,49 +115,17 @@ router.post("/new", isLoggedIn, (req, res) => {
     });
 });
 
-router.post("/listings/:id/edit", isLoggedIn, (req, res) => {
-  res.render("listings/edit", {
-    editListing: {
-      listing,
-    },
-  });
-});
-
-// Delete a listing
-router.delete("/:id", isLoggedIn, (req, res) => {
-  db.listing
-    .delete(
-      {
-        name: req.body.name,
-        location: req.body.location,
-        email: req.body.email,
-        content: req.body.content,
-      },
-      {
-        where: { id: req.user.id },
-      }
-    )
-    .then((listing) => {
-      if (!listing) throw error;
-      res.redirect("listings/myListings");
-    })
-    .catch((error) => {
-      res.status(404).render("/404");
-    });
-});
-
-router.delete('/:id/myListings', isLoggedIn, async (req, res) => {
+router.delete("/:id/myListings", isLoggedIn, async (req, res) => {
   try {
-    let deleteMylistings= await db.listing.destroy({
-      where: { id: req.params.id},
-    })
-    res.render('/myListings')
+    let deleteMylistings = await db.listing.destroy({
+      where: { id: req.params.id },
+    });
+    res.redirect("/listings/myListings");
+  } catch (error) {
+    console.log("*********************ERROR***********************");
+    console.log(error);
+    console.log("**************************************************");
+    res.render("...");
   }
-  catch (error) {
-        console.log('*********************ERROR***********************');
-        console.log(error);
-        console.log('**************************************************');
-        res.render('...');
-  }
-})
+});
 module.exports = router;
