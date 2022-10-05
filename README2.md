@@ -1,6 +1,23 @@
 This is Garage-Trip.
 
-TO INSTALL
+TO INSTALL:
+This link  https://github.com/jhayes907/Garage-trip will bring you to the Github repo for Garage-Trip.
+
+Fork and clone this repo to your local machine.
+
+CD into the folder where your repo is located.
+
+Install the Dependencies using: npm install.
+
+create a file in the main file directoru called ".env" where you need to add SECRET SESSION=secret session.
+
+Create your database with the following: "npm install sequelize-cl" npm sequelize-c;o db:create Garage-trip.
+
+Then migrate your database with the following: sequelize-cli db:migrate.
+
+Final step: Start the server.  
+
+
 
 ABOUT:
 Garage-Trip was made for the second project of my GA immersive cohort, sept 2022.
@@ -55,38 +72,45 @@ The database models are set up with the following model configurations:
 | updatedAt   | Date      | Auto-generated                     |
 
 
-### User Model
+### Listing Model
 
 | Column Name | Data Type | Notes                              |
 | ----------- | --------- | ---------------------------------- |
 | id          | Integer   | Serial Primary Key, Auto-generated |
+| userId      | Integer   |                                    |
 | name        | String    | Must be provided                   |
-| email       | String    | Must be unique / used for login    |
-| password    | String    | Stored as a hash                   |
+| location    | String    |                                    |
+| tags        | String    |                                    |
+| content     | String    |                                    |
 | createdAt   | Date      | Auto-generated                     |
 | updatedAt   | Date      | Auto-generated                     |
 
 
-### User Model
+### Item Model
 
 | Column Name | Data Type | Notes                              |
 | ----------- | --------- | ---------------------------------- |
 | id          | Integer   | Serial Primary Key, Auto-generated |
-| name        | String    | Must be provided                   |
-| email       | String    | Must be unique / used for login    |
-| password    | String    | Stored as a hash                   |
+| userId      | Integer   |                                    |
+| listingId   | Integer   |                                    |
+| name        | String    |                   |
+| location    | String    |                                    |
+| tags        | String    |                                    |
+| content     | String    |                                    |
 | createdAt   | Date      | Auto-generated                     |
 | updatedAt   | Date      | Auto-generated                     |
 
 
-### User Model
+### Comment Model
 
 | Column Name | Data Type | Notes                              |
 | ----------- | --------- | ---------------------------------- |
 | id          | Integer   | Serial Primary Key, Auto-generated |
-| name        | String    | Must be provided                   |
-| email       | String    | Must be unique / used for login    |
-| password    | String    | Stored as a hash                   |
+| userId      | Integer   |                                    |
+| listingId   | Integer   |                                    |
+| itemId      | Integer   |                                    |
+| name        | String    |                                    |
+| content     | String    |                                    |
 | createdAt   | Date      | Auto-generated                     |
 | updatedAt   | Date      | Auto-generated                     |
 
