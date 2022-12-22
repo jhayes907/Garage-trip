@@ -48,6 +48,6 @@
     "pg-hstore": "^2.3.4",
     "rowdy-logger": "^1.0.2",
     "sequelize": "^6.21.6",
-    "sequelize-cli": "^6.5.1"
+    "sequelize-cli": "^6.5.2"
   }
 }
